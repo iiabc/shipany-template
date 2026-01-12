@@ -28,12 +28,15 @@ import { Header as HeaderType } from "@/types/blocks/header";
 import Icon from "@/components/icon";
 import { Link } from "@/i18n/navigation";
 import LocaleToggle from "@/components/locale/toggle";
-import { Menu } from "lucide-react";
+import { Menu, Palette } from "lucide-react";
 import SignToggle from "@/components/sign/toggle";
 import ThemeToggle from "@/components/theme/toggle";
 import { cn } from "@/lib/utils";
+import { useTranslations } from "next-intl";
 
 export default function Header({ header }: { header: HeaderType }) {
+  const t = useTranslations();
+  
   if (header.disabled) {
     return null;
   }
@@ -115,28 +118,52 @@ export default function Header({ header }: { header: HeaderType }) {
                       );
                     }
 
+                    const isDocs = item.title?.toLowerCase().includes("doc") || 
+                                   item.name?.toLowerCase().includes("doc") ||
+                                   item.url?.includes("/docs");
+                    
                     return (
-                      <NavigationMenuItem key={i}>
-                        <Link
-                          className={cn(
-                            "text-muted-foreground",
-                            navigationMenuTriggerStyle,
-                            buttonVariants({
-                              variant: "ghost",
-                            })
-                          )}
-                          href={item.url as any}
-                          target={item.target}
-                        >
-                          {item.icon && (
-                            <Icon
-                              name={item.icon}
-                              className="size-4 shrink-0 mr-0"
-                            />
-                          )}
-                          {item.title}
-                        </Link>
-                      </NavigationMenuItem>
+                      <>
+                        <NavigationMenuItem key={i}>
+                          <Link
+                            className={cn(
+                              "text-muted-foreground",
+                              navigationMenuTriggerStyle,
+                              buttonVariants({
+                                variant: "ghost",
+                              })
+                            )}
+                            href={item.url as any}
+                            target={item.target}
+                          >
+                            {item.icon && (
+                              <Icon
+                                name={item.icon}
+                                className="size-4 shrink-0 mr-0"
+                              />
+                            )}
+                            {item.title}
+                          </Link>
+                        </NavigationMenuItem>
+                        {/* 生成涂色书入口 */}
+                        {isDocs && (
+                          <NavigationMenuItem>
+                            <Link
+                              className={cn(
+                                "text-muted-foreground",
+                                navigationMenuTriggerStyle,
+                                buttonVariants({
+                                  variant: "ghost",
+                                })
+                              )}
+                              href="/coloring-page"
+                            >
+                              <Palette className="size-4 shrink-0 mr-0" />
+                              {t("coloring_page.nav_title")}
+                            </Link>
+                          </NavigationMenuItem>
+                        )}
+                      </>
                     );
                   })}
                 </NavigationMenuList>
@@ -257,21 +284,37 @@ export default function Header({ header }: { header: HeaderType }) {
                           </AccordionItem>
                         );
                       }
+                      const isDocs = item.title?.toLowerCase().includes("doc") || 
+                                     item.name?.toLowerCase().includes("doc") ||
+                                     item.url?.includes("/docs");
+                      
                       return (
-                        <Link
-                          key={i}
-                          href={item.url as any}
-                          target={item.target}
-                          className="font-semibold my-4 flex items-center gap-2 px-4"
-                        >
-                          {item.icon && (
-                            <Icon
-                              name={item.icon}
-                              className="size-4 shrink-0"
-                            />
+                        <>
+                          <Link
+                            key={i}
+                            href={item.url as any}
+                            target={item.target}
+                            className="font-semibold my-4 flex items-center gap-2 px-4"
+                          >
+                            {item.icon && (
+                              <Icon
+                                name={item.icon}
+                                className="size-4 shrink-0"
+                              />
+                            )}
+                            {item.title}
+                          </Link>
+                          {/* 生成涂色书入口 */}
+                          {isDocs && (
+                            <Link
+                              href="/coloring-page"
+                              className="font-semibold my-4 flex items-center gap-2 px-4"
+                            >
+                              <Palette className="size-4 shrink-0" />
+                              {t("coloring_page.nav_title")}
+                            </Link>
                           )}
-                          {item.title}
-                        </Link>
+                        </>
                       );
                     })}
                   </Accordion>
