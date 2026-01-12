@@ -1,11 +1,19 @@
 import { respData, respErr } from "@/lib/resp";
 
-const API_KEY = "f2d873bf3ff6738325f1d67896c6287d";
-const API_BASE_URL = "https://api.kie.ai/api/v1";
+const API_KEY = process.env.COLORING_PAGE_API_KEY;
+const API_BASE_URL = process.env.COLORING_PAGE_API_BASE_URL || "https://api.kie.ai/api/v1";
+
+if (!API_KEY) {
+  console.error("COLORING_PAGE_API_KEY is not set in environment variables");
+}
 
 // 创建生成任务
 export async function POST(req: Request) {
   try {
+    if (!API_KEY) {
+      return respErr("API key is not configured");
+    }
+
     const { prompt, aspect_ratio } = await req.json();
 
     if (!prompt) {
@@ -62,6 +70,10 @@ export async function POST(req: Request) {
 // 查询任务状态
 export async function GET(req: Request) {
   try {
+    if (!API_KEY) {
+      return respErr("API key is not configured");
+    }
+
     const { searchParams } = new URL(req.url);
     const taskId = searchParams.get("taskId");
 
