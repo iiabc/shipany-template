@@ -132,5 +132,31 @@
     "contact_tip": "Other ways to contact us",
     "rating_tip": "How do you feel about ShipAny?",
     "placeholder": "Leave your words here..."
+  },
+  "coloring_page": {
+    "title": "Convert Text to Coloring Page",
+    "nav_title": "Generate Coloring Page",
+    "description": "Generate beautiful coloring pages from text descriptions",
+    "prompt_placeholder": "For example: A Wooden Box in Nature.",
+    "prompt_label": "Prompt",
+    "aspect_ratio_label": "Aspect Ratio",
+    "generate_button": "Turn Text to Coloring Pages",
+    "generating": "Generating...",
+    "aspect_ratio_default": "Default",
+    "aspect_ratio_square": "Square",
+    "aspect_ratio_landscape": "Landscape",
+    "aspect_ratio_portrait": "Portrait",
+    "loading": "Generating your coloring page...",
+    "error": "Failed to generate coloring page. Please try again.",
+    "try_again": "Try Again",
+    "success": "Coloring page generated successfully!",
+    "prompt_required": "Please enter a prompt",
+    "query_failed": "Failed to query task status",
+    "generate_failed": "Failed to generate coloring page",
+    "suggestions": {
+      "bluey": "Bluey holding gifts",
+      "spiderman": "Spiderman reading books",
+      "farm": "Busy farm"
+    }
   }
 }

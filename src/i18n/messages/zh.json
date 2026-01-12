@@ -132,5 +132,31 @@
     "contact_tip": "其他联系方式",
     "rating_tip": "您对 ShipAny 的看法如何？",
     "placeholder": "在这里留下您的反馈..."
+  },
+  "coloring_page": {
+    "title": "将文本转换为涂色书",
+    "nav_title": "生成涂色书",
+    "description": "从文本描述生成精美的涂色书页面",
+    "prompt_placeholder": "例如：自然中的木盒。",
+    "prompt_label": "提示词",
+    "aspect_ratio_label": "图片比例",
+    "generate_button": "将文本转换为涂色书",
+    "generating": "生成中...",
+    "aspect_ratio_default": "默认",
+    "aspect_ratio_square": "正方形",
+    "aspect_ratio_landscape": "横向",
+    "aspect_ratio_portrait": "竖向",
+    "loading": "正在生成您的涂色书...",
+    "error": "生成涂色书失败，请重试。",
+    "try_again": "重试",
+    "success": "涂色书生成成功！",
+    "prompt_required": "请输入提示词",
+    "query_failed": "查询任务状态失败",
+    "generate_failed": "生成涂色书失败",
+    "suggestions": {
+      "bluey": "布鲁伊拿着礼物",
+      "spiderman": "蜘蛛侠读书",
+      "farm": "繁忙的农场"
+    }
   }
 }
